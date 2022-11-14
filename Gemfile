@@ -24,7 +24,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem ‘rspec-rails’, ‘~> 4.1.0’ 
+gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
 
 group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
