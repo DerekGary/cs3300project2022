@@ -11,18 +11,17 @@ RSpec.describe Project, type: :model do
         context "validations tests" do
             it "ensures the description is present" do
                 project = Project.new(description: "Test Description")
-                expect(project.valid?).to eq(true)
+                expect(project.valid?).to eq(false)
             end
 
             it "ensures the title is present" do
-                project = Project.new(title: "Test Title")
-                expect(project.valid?).to eq(true)
-            end
-
-            # Personally added this line for my own research.
-            it "ensures the description cannot take nil" do
-                project = Project.new(description: nil)
+                project = Project.new(title: "New Title")
                 expect(project.valid?).to eq(false)
+              end
+
+            it "should be able to save project" do
+                project = Project.new(title: "Test Title", description: "Test description")
+                expect(project.save).to eq(true)
             end
         end
 
