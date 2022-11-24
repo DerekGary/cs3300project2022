@@ -14,6 +14,11 @@ RSpec.describe Project, type: :model do
                 expect(project.valid?).to eq(true)
             end
 
+            it "ensures the title is present" do
+                project = Project.new(title: "Test Title")
+                expect(project.valid?).to eq(true)
+            end
+
             # Personally added this line for my own research.
             it "ensures the description cannot take nil" do
                 project = Project.new(description: nil)
