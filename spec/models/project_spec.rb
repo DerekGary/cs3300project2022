@@ -21,8 +21,22 @@ RSpec.describe Project, type: :model do
             end
         end
 
+=begin
+Scopes Testing
+        Purpose: Tests whether three project object instances can be created 
+        each housing a hash containing title and description parameters. Let
+        is used in a way which is called 'lazy loading'.
+=end
         context "scopes tests" do
-
-
+            let(:params) { { title: "Title", description: "some description" } }
+            before(:each) do
+               Project.create(params)
+               Project.create(params)
+               Project.create(params)
+            end
+            
+            it "should return all projects" do
+               expect(Project.count).to eq(3)
+            end
         end
     end
