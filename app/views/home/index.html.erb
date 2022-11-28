@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CS3300 Portfolio Project</title>
-
   </head>
   
   <body>
@@ -16,16 +15,13 @@
       <div style="padding-left: 2rem;">
         <h4 style="color: blue"> Derek Gary </h3>
         
-
-        <!--- Explain what the block of code below this line is doing --->
-
         <% if user_signed_in? %>
           
           <div> Welcome <%= current_user.email %> </div>
           <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
         
         <% else %>
-          <a href="/users/sign_in"> Sign in</a>
+          <a href="users/sign_in"> Sign in</a>
         <% end %>
 
       </div>
