@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #root "projects#index"
   authenticated do
     root "projects#index", as: :root_path
+    resources :projects
   end
 
   unauthenticated do
