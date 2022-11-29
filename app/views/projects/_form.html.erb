@@ -11,17 +11,16 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-project-title">Title</span>
+    <%= form.text_field :title, {class: "form-control"}%>
+  </div>
+  <div class="form-floating">
+    <%= form.text_area :description, {class: "form-control mb-1"}%>
+    <label for="floatingTextarea">Description</label>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+  <div class="d-grid gap-2 pt-4">
+    <%= form.submit "Create Project", class:"btn btn-success btn-large" %>
   </div>
 <% end %>
