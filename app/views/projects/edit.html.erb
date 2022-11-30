@@ -2,7 +2,11 @@
   <%= render "general/boot-header" %>
 </head>
 <%= render "general/navbar" %>
+<% if user_signed_in? %>
+  <h1>Editing project</h1>
+    <%= render "form", project: @project %>
+  <% else %>
+    <h3 class="text-center">Error: Please sign in to edit projects.</h3>
+<% end %>
 
-<h1>Editing project</h1>
 
-<%= render "form", project: @project %>

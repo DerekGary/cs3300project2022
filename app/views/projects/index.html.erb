@@ -47,53 +47,19 @@
                     </ul>
                 </ul>
 
-                <div class="d-flex flex-row pt-4 gap-3">
-                    <div class="card card-body border-success">
-                        <h4 class="card-title">Project Title 1</h4>
-                        <p class="card-text">Lorem ipsum dolor sit
-                            amet consectetur adipiscing, elit sapien
-                            tortor scelerisque congue, eleifend
-                            rutrum inceptos lacus diam. Quis sem cum
-                            aliquam placerat ornare porttitor
-                            dapibus dignissim mollis nisi euismod
-                            interdum elit sit et, aptent dui lacus
-                            orci lorem magnis sodales cras curabitur
-                            varius bibendum vitae ullamcorper
-                            senectus.</p>
-                        <a href="#" class="btn btn-primary">Show
-                            this project »</a>
+                <% @projects.in_groups_of(3, false).each do |row_group| %>
+                    <div class="d-flex flex-row pt-4 gap-3">
+                        <% row_group.each do |individual_project| %>
+                            <div class="col sm-3"  style="width:50%">
+                                <div class="card card-body border-success d-flex flex-column" style="height:auto">
+                                <h4 class="card-title"><%= individual_project.title %></h4>
+                                <p class="card-text"><%= individual_project.description %></p>
+                                <%= link_to "Show this project »", individual_project, class:"btn btn-primary mt-auto"%>
+                                </div>
+                            </div>
+                        <% end %>
                     </div>
-                    <div class="card card-body border-success">
-                        <h4 class="card-title">Project Title 2</h4>
-                        <p class="card-text">Lorem ipsum dolor sit
-                            amet consectetur adipiscing, elit sapien
-                            tortor scelerisque congue, eleifend
-                            rutrum inceptos lacus diam. Quis sem cum
-                            aliquam placerat ornare porttitor
-                            dapibus dignissim mollis nisi euismod
-                            interdum elit sit et, aptent dui lacus
-                            orci lorem magnis sodales cras curabitur
-                            varius bibendum vitae ullamcorper
-                            senectus.</p>
-                        <a href="#" class="btn btn-primary">Show
-                            this project »</a>
-                    </div>
-                    <div class="card card-body border-success">
-                        <h4 class="card-title">Project Title 3</h4>
-                        <p class="card-text">Lorem ipsum dolor sit
-                            amet consectetur adipiscing, elit sapien
-                            tortor scelerisque congue, eleifend
-                            rutrum inceptos lacus diam. Quis sem cum
-                            aliquam placerat ornare porttitor
-                            dapibus dignissim mollis nisi euismod
-                            interdum elit sit et, aptent dui lacus
-                            orci lorem magnis sodales cras curabitur
-                            varius bibendum vitae ullamcorper
-                            senectus.</p>
-                        <a href="#" class="btn btn-primary">Show
-                            this project »</a>
-                    </div>
-                </div>
+                <% end %>
             </div>
             <footer class="p-4 rounded">
                 <hr class="hr" />
