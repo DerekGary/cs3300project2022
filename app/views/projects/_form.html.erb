@@ -24,10 +24,10 @@
     <div class="modal-body p-5 pt-0">
     <div class="input-group mb-3">
     <span class="input-group-text" id="basic-project-title">Title</span>
-    <%= form.text_field :title, {class: "form-control"}%>
+    <%= form.text_field :title, class: "form-control", id: "title"%>
   </div>
   <div class="form-floating">
-    <%= form.text_area :description, {class: "form-control mb-1"}%>
+    <%= form.text_area :description, class: "form-control mb-1", id: "description" %>
     <label for="floatingTextarea">Description</label>
   </div>
 
