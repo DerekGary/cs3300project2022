@@ -1,37 +1,7 @@
 <html>
-
-<head>
-  <%= render "general/boot-header" %>
-</head>
-
-<body class="bg-dark">
-    <%= render "general/navbar"%>
-    <div class="modal modal-signin position-static d-block py-5"
-        tabindex="-1" role="dialog" id="modalSignin">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content rounded-1 bg-secondary">
-            <div class="modal-header p-5 pb-4 border-bottom-0">
-              <h1 class="fw-normal mb-2 fs-2 text-light">New Project</h1>
-            </div>
-          <div class="modal-body p-5 pt-0">
-            <%= render "form", project: @project %>
-          </div>
-          <div class="modal-footer ps-5 d-grid d-md-block mt-3">
-            <%= link_to "Back to projects", projects_path, class: "btn btn-dark"%>
-          </div>
-        </div>
-      </div>
-    <div>
-
-<% if false %>
-    <h1>New project</h1>
-
-<%= render "form", project: @project %>
-
-<br>
-<div>
-</div>
-<% end %>
-</body>
-
+  <head>
+    <%= render "general/boot-header" %>
+  </head>
+  <%= render "general/navbar"%>
+  <%= render "form", project: @project %>
 </html>

@@ -2,7 +2,6 @@
   <% if project.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
         <% project.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -10,8 +9,20 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="input-group mb-3">
+  <body class="bg-dark">
+  <div class="modal modal-signin position-static d-block py-5"
+  tabindex="-1" role="dialog" id="modalSignin">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content rounded-1 bg-secondary">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+      <% if project.persisted? %>
+        <h1 class="fw-normal mb-2 fs-2 text-light">Edit Project</h1>
+      <% else %>
+        <h1 class="fw-normal mb-2 fs-2 text-light">Create Project</h1>
+      <% end %>
+      </div>
+    <div class="modal-body p-5 pt-0">
+    <div class="input-group mb-3">
     <span class="input-group-text" id="basic-project-title">Title</span>
     <%= form.text_field :title, {class: "form-control"}%>
   </div>
@@ -21,6 +32,17 @@
   </div>
 
   <div class="d-grid gap-2 pt-4">
-    <%= form.submit "Create Project", class:"btn btn-success btn-large" %>
+    <%= form.submit project.persisted? ? 'Update Project' : 'Create Project', class:"btn btn-success btn-large" %>
   </div>
+    </div>
+    <div class="modal-footer ps-5 d-grid d-md-block mt-3">
+      <%= link_to "Back to projects", projects_path, class: "btn btn-dark"%>
+      <% if project.persisted? %>
+        <%= link_to "Show this project", @project, class: "btn btn-dark" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div>
 <% end %>
+</body>
