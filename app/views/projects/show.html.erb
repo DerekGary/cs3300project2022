@@ -16,10 +16,12 @@
           <%= render @project %>
         </div>
         <div class="modal-footer">
-          <%= link_to "Back to projects", projects_path, class: "btn btn-dark" %>
-          <% if user_signed_in? %>
+          <% if @user_signed_in %>
+            <%= link_to "Back to projects", projects_path, class: "btn btn-dark" %>
             <%= link_to "Edit this project", edit_project_path(@project), class: "btn btn-dark" %>
             <%= button_to "Destroy this project", @project, method: :delete, class: "btn btn-danger" %>
+          <% else %>
+              <%= link_to "Back to projects", :back, class: "btn btn-dark" %>
           <% end %>
         </div>
     </div>
