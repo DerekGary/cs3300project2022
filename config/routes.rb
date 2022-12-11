@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+    #get '/student/:user_id' => 'projects#display_public_view'
+    get '/student/:user_id' => 'projects#index'
+    
   devise_for :users
   #root "projects#index"
   authenticated do
