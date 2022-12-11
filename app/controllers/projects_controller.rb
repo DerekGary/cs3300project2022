@@ -1,18 +1,31 @@
 class ProjectsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :set_project, only: %i[ show edit update destroy ]
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    @user_signed_in = user_signed_in?
+    if user_signed_in?
+      @projects = current_user.projects.all
+    else
+      set_user
+      if params.has_key?(:user_id)
+        @user_id = params[:user_id]
+      end
+      @projects = @user.projects.all
+    end
   end
 
   # GET /projects/1 or /projects/1.json
   def show
+    @user_signed_in = user_signed_in?
   end
 
   # GET /projects/new
   def new
-    @project = Project.new
+    @project = current_user.projects.new
   end
 
   # GET /projects/1/edit
@@ -21,7 +34,7 @@ class ProjectsController < ApplicationController
 
   # POST /projects or /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = current_user.projects.new(project_params)
 
     respond_to do |format|
       if @project.save
@@ -62,6 +75,12 @@ class ProjectsController < ApplicationController
     def set_project
       @project = Project.find(params[:id])
     end
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
+    
 
     # Only allow a list of trusted parameters through.
     def project_params
